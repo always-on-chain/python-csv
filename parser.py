@@ -1,14 +1,18 @@
 import csv
 
-filename = 'rdu-weather-history.csv'
-fields = []
+file = 'rdu-weather-history.csv'
+header = []
+parsed_header = []
 rows = []
+parsed_header_rows = {}
 
-with open(filename, 'r') as csvfile:
+with open(file, 'r') as csvfile:
   csvreader = csv.reader(csvfile)
-  fields = csvreader.next()
+  header = csvreader.next()
+  parsed_header = header[0].split(';')
 
   for row in csvreader:
-    rows.append(row)
+    rows.append(row[0].split(';'))
 
-  print('Total no. of rows: %d'%(csvreader.line_num))
+parsed_header_rows['header'] = parsed_header
+parsed_header_rows['rows'] = rows
