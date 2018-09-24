@@ -27,5 +27,25 @@ class Cylinder:
 cylinder = Cylinder(2, 3) 
 print cylinder.volume()
 print cylinder.surface_area()
-    
+
+
+class Account:
+  def __init__(self, owner, balance=0):
+    self.owner = owner
+    self.balance = balance
+    print 'Account owner: {}'.format(self.owner)
+    print 'Account balance: ${}'.format(self.balance)
+  def deposit(self, amount):
+    self.balance += amount
+    print 'Balance for {}: ${}'.format(self.owner, self.balance)
+  def withdraw(self, amount):
+    if amount <= self.balance:
+      self.balance -= amount
+      print 'Withdrawal accepted. New balance: {}'.format(self.balance)
+    else:
+      print 'Funds unavailable!'
+
+account = Account('Wayne', 100)
+account.deposit(50)
+account.withdraw(123)
 
