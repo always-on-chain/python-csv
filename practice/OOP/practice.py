@@ -49,3 +49,37 @@ account = Account('Wayne', 100)
 account.deposit(50)
 account.withdraw(123)
 
+
+
+class Student(object):
+  def __init__(self, name, school):
+    self.name = name
+    self.school = school
+    self.grades = [98, 71, 85, 65, 99, 56]
+
+  def average(self):
+    return float(sum(self.grades)) / len(self.grades)
+
+  def friend(self, friend_name):
+    return Student(friend_name, self.school)
+
+  @staticmethod
+  def go_to_school():
+    print("I'm going to school.")
+
+anna = Student('Anna', 'Oxford')
+friend = anna.friend('Greg')
+print friend.name
+print friend.school
+
+class WorkingStudent(Student):
+  def __init__(self, name, school, salary):
+    super(WorkingStudent, self).__init__(name, school)
+    self.salary = salary
+
+wayne = WorkingStudent('Wayne', 'UH', 50)
+print wayne.school
+
+friend = wayne.friend('Greg')
+print friend.name
+print friend.school
