@@ -107,3 +107,26 @@ def spy_game(nums):
 print spy_game([1,2,4,0,0,7,5])
 print spy_game([1,0,2,4,0,5,7])
 print spy_game([1,7,2,0,4,5,0])
+
+#Write a function that asks the user for a list of people they know
+def who_do_you_know():
+  known_people = raw_input('Enter the people you know, seperated by commas: ')
+  list_people = known_people.split(',')
+  list_people_nospace = []
+  for person in list_people:
+    list_people_nospace.append(person.strip())
+  
+  print list_people_nospace
+  return list_people_nospace
+
+#Write a function that asks the user for they know and see if the name is in the list 
+#of people they know
+def ask_user():
+  name = raw_input('Provide a name: ')
+
+  if name in who_do_you_know():
+    print 'You know {}'.format(name)
+  else:
+    print 'You do not know {}'.format(name)
+
+ask_user()
