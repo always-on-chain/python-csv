@@ -1,3 +1,5 @@
+import functools
+
 #manually created a decorator
 def new_decorator(original_func):
   def wrap_func():
@@ -19,3 +21,18 @@ def func_needs_decorator():
   print 'I want to be decorated!!'
 
 func_needs_decorator()
+
+#new examples
+def my_decorator(func):
+  @functools.wraps(func)
+  def function_that_runs_func():
+    print 'In the decorator func'
+    func()
+    print 'After the decorator!'
+  return function_that_runs_func
+  
+@my_decorator
+def my_function():
+  print "I'm the function!"
+
+my_function()
