@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
 
 app = Flask(__name__)
 stores = [
@@ -15,7 +15,7 @@ stores = [
 
 @app.route('/')
 def home():
-  return 'Hello World!'
+  return render_template('index.html')
 
 #POST /store data: {name:}
 @app.route('/store', methods=['POST'])
@@ -55,8 +55,7 @@ def create_item_in_store(name):
       }
       store['items'].append(new_item)
       return jsonify(new_item)
-    else:
-      return jsonify({'message': 'store not found'})
+  return jsonify({'message': 'store not found'})
 
 
 #GET /store/<string:name>/item
@@ -65,7 +64,7 @@ def get_items_in_store(name):
   for store in stores:
     if store['name'] == name:
       return jsonify(store['items'])
-  return jsonify('message': 'store not found')
+  return jsonify({'message': 'store not found'})
   
 
 
